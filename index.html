@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Include the npm package -->
+    <script type="module" src="./dist/index.js" defer></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Outfit&family=Rethink+Sans&family=Zilla+Slab:wght@300;400&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" type="text/css" href="./src/styles.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+  </head>
+  <body>
+    <!-- Sidebar -->
+    <div class="sidebar">
+      <a class="active" href="#main">Home</a>
+      <a href="https://github.com/jon424" rel="noopener" target="_blank"
+        >GitHub</a
+      >
+      <a
+        href="https://www.linkedin.com/in/jonjackson424/"
+        rel="noopener"
+        target="_blank"
+        >LinkedIn</a
+      >
+      <a
+        href="https://www.buymeacoffee.com/jonathanja7"
+        rel="noopener"
+        target="_blank"
+        >Buy me a coffee ☕</a
+      >
+    </div>
+
+    <main id="main">
+      <h1>
+        JavaScript Count-up Animation...<span id="one-hundred"> 100</span>
+      </h1>
+
+      <p>A JavaScript function to display incrementing numbers.</p>
+      <div class="section">
+        <h2>animateCountUp(element, duration, stepSize, startingValue)</h2>
+        <ul>
+          <li>
+            <b>element</b> - HTML element that contains a number to be animated.
+            This number can be an integer (<em>i.e.</em> 1, 42, 23...) or have 1
+            or 2 decmimal points (<em>i.e.</em> 23.9, 9.04...)
+          </li>
+          <li>
+            <b>duration</b> - total length of time of the animation in
+            milliseconds. 10000 is the default.
+          </li>
+          <li>
+            <b>stepSize</b> - the increment by which the numbers are increased.
+            If the step size is <b>3</b>, then the counting would look like:
+            <b>3, 6, 9, 12...</b> This feature only works if the number you are
+            counting up to is an integer.
+          </li>
+          <li><b>startingValue</b> - The starting number.</li>
+        </ul>
+      </div>
+
+      <div class="section">
+        <p>First, import the module:</p>
+        <pre><code><span class="selector">&lt;script</span> <span class="attribute">type="module"</span><span class="selector">>
+        </span><span class="number">import</span> <span class="selector">animateCountUp</span> from <span class="attribute">"./dist/index.js";</span>
+<span class="selector">&lt;/script></span></code></pre>
+        <!-- ------------------------------------------------------------------- -->
+        <div class="code-block">
+          <pre><span class="selector">header img</span> {
+      <span class="attribute">display</span>: inline-block;
+      <span class="attribute">height</span>: <span class="number">120</span><span class="unit">px</span>;
+      <span class="attribute">vertical-align</span>: top;
+      <span class="attribute">width</span>: <span class="number">120</span><span class="unit">px</span>;
+    }</pre>
+        </div>
+        <div id="example-one-container">
+          <div id="container" class="example-one">
+            <ul>
+              <li>
+                <span class="before-number fadeInAnimated">$</span
+                ><span class="countup">45.23</span
+                ><span class="after-number fadeInAnimated">+</span>
+              </li>
+              <li>
+                <span class="countup">110.3</span
+                ><span class="after-number fadeInAnimated">%</span>
+              </li>
+              <li>
+                <span class="before-number fadeInAnimated">₣</span
+                ><span class="countup">42</span
+                ><span class="after-number">!</span>
+              </li>
+            </ul>
+          </div>
+          <button id="animateButton">Animate</button>
+        </div>
+      </div>
+
+      <button id="anotherAnimateButton">Animate</button>
+
+      <div id="container-two" class="example-one">
+        <ul>
+          <li>
+            <span class="before-number">$</span
+            ><span id="countupTwo" class="countup">174</span
+            ><span class="after-number">+</span>
+          </li>
+          <li>
+            <span id="countupThree" class="countup">18.76</span
+            ><span class="after-number">%</span>
+          </li>
+
+          <li>
+            <span class="before-number">₣</span
+            ><span id="countupFour" class="countup">185.32</span
+            ><span class="after-number">!</span>
+          </li>
+        </ul>
+      </div>
+
+      <button id="aThirdAnimateButton">Animate</button>
+
+      <div id="container-three" class="example-one">
+        <div class="card">
+          <span class="before-number">$</span
+          ><span id="countupTwo" class="countup">174</span
+          ><span class="after-number">+</span>
+        </div>
+        <div class="card">
+          <span id="countupThree" class="countup">18.76</span
+          ><span class="after-number">%</span>
+        </div>
+
+        <div class="card">
+          <span class="before-number">₣</span
+          ><span id="countupFour" class="countup">185.32</span
+          ><span class="after-number">!</span>
+        </div>
+      </div>
+
+      <div>
+        <p>
+          Can be triggered on scroll - keep scrolling to trigger the animation!
+          Can be triggered on scroll - keep scrolling to trigger the animation!
+          Can be triggered on scroll - keep scrolling to trigger the animation!
+          Can be triggered on scroll - keep scrolling to trigger the animation!
+          Can be triggered on scroll - keep scrolling to trigger the animation!
+        </p>
+        <div class="spacer"></div>
+        <div id="container-four">
+          <ul>
+            <li>
+              <span class="before-number">$</span
+              ><span id="countupTwo" class="countup">200</span
+              ><span class="after-number">+</span>
+            </li>
+            <li>
+              <span id="countupThree" class="countup">304.76</span
+              ><span class="after-number">%</span>
+            </li>
+
+            <li>
+              <span class="before-number">₣</span
+              ><span id="countupFour" class="countup">430.32</span
+              ><span class="after-number">!</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <script type="module">
+        import animateCountUp from "./dist/index.js";
+
+        // count to 100 on page load
+        document.addEventListener("DOMContentLoaded", () => {
+          const countToOneHundred = document.getElementById("one-hundred");
+          animateCountUp(countToOneHundred, 5000, 1, 0);
+        });
+
+        // Add event listener using JavaScript
+        document
+          .getElementById("animateButton")
+          .addEventListener("click", () => {
+            const container = document.querySelector("#container");
+            const countupEls = container.querySelectorAll(".countup");
+            countupEls.forEach((el, index) => {
+              setTimeout(() => {
+                animateCountUp(el, 7000, 7, 5);
+              }, index * 200);
+            });
+          });
+
+        document
+          .getElementById("anotherAnimateButton")
+          .addEventListener("click", () => {
+            const container = document.querySelector("#container-two");
+            const countupEls = container.querySelectorAll(".countup");
+            const totalElements = countupEls.length;
+            let completedAnimations = 0;
+
+            countupEls.forEach((el, index) => {
+              setTimeout(() => {
+                animateCountUp(el, 4000, 1, 0, () => {
+                  completedAnimations++;
+
+                  // Check if all animations are completed
+                  if (completedAnimations === totalElements) {
+                    console.log("Animation finished!");
+                  }
+                });
+              }, index * 700);
+            });
+          });
+
+        //example for #container-three
+        document
+          .getElementById("aThirdAnimateButton")
+          .addEventListener("click", () => {
+            const container = document.querySelector("#container-three");
+            const countupEls = container.querySelectorAll(".countup");
+            countupEls.forEach((el, index) => {
+              setTimeout(() => {
+                animateCountUp(el, 3500, 1, 0);
+              }, index * 500);
+            });
+          });
+
+        //example for #container-four (with Intersection Observer)
+        const containerThreeObserver = new IntersectionObserver((entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              const countupEls = entry.target.querySelectorAll(".countup");
+              countupEls.forEach((el, index) => {
+                setTimeout(() => {
+                  animateCountUp(el, 4000, 1, 0);
+                }, index * 700);
+              });
+
+              containerThreeObserver.unobserve(entry.target);
+            }
+          });
+        });
+
+        // Observe the container-three
+        containerThreeObserver.observe(
+          document.getElementById("container-four")
+        );
+
+        //TODO: show each feature (each arg should have a good example)
+        // onclick examples, IO examples, show that you can have any kind of element (li, divs, headings... )
+        // show with and without delay
+      </script>
+    </main>
+    <div class="footer">
+      <!-- Replicate the content of the sidebar in the footer -->
+      <a class="active" href="#main">Home</a>
+      <a href="https://github.com/jon424" rel="noopener" target="_blank"
+        >GitHub</a
+      >
+      <a
+        href="https://www.linkedin.com/in/jonjackson424/"
+        rel="noopener"
+        target="_blank"
+        >LinkedIn</a
+      >
+      <a
+        href="https://www.buymeacoffee.com/jonathanja7"
+        rel="noopener"
+        target="_blank"
+        >Buy me a coffee ☕</a
+      >
+    </div>
+  </body>
+</html>
