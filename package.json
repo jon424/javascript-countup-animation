@@ -1,6 +1,6 @@
 {
   "name": "countup-animation",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "A JavaScript function to display incrementing numbers.",
   "main": "dist/index.js",
   "scripts": {
