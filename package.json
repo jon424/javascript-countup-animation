@@ -3,6 +3,11 @@
   "version": "1.0.5",
   "description": "A JavaScript function to display incrementing numbers.",
   "main": "dist/index.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jon424/javascript-countup-animation"
+  },
+  "homepage": "https://jon424.github.io/javascript-countup-animation/",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
