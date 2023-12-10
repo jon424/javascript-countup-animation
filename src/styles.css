@@ -67,7 +67,7 @@ footer a:hover:not(.active) {
 main {
   margin: 0 auto;
   max-width: 50em;
-  padding: 4em 1em;
+  padding: 1em 1em 4em;
 }
 
 h1 {
@@ -187,19 +187,17 @@ pre {
 }
 
 .spacer {
-  border: 1px solid red;
-  background-color: lightsteelblue;
-  height: 40rem;
+  height: 4rem;
 }
 
-#container-three {
+#container-two {
   display: flex;
   flex-direction: row;
   justify-content: space-around;
 }
 
 .card {
-  font-size: 4rem;
+  font-size: 2rem;
 }
 
 /* actually happening when the screen is <= 320px */

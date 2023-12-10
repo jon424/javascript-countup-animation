@@ -16,7 +16,10 @@
     <!-- Sidebar -->
     <div class="sidebar">
       <a class="active" href="#main">Home</a>
-      <a href="https://github.com/jon424" rel="noopener" target="_blank"
+      <a
+        href="https://github.com/jon424/javascript-countup-animation"
+        rel="noopener"
+        target="_blank"
         >GitHub</a
       >
       <a
@@ -63,19 +66,108 @@
 
       <div class="section">
         <p>First, import the module:</p>
+        <b>JavaScript</b>
         <pre><code><span class="selector">&lt;script</span> <span class="attribute">type="module"</span><span class="selector">>
         </span><span class="number">import</span> <span class="selector">animateCountUp</span> from <span class="attribute">"./dist/index.js";</span>
 <span class="selector">&lt;/script></span></code></pre>
         <!-- ------------------------------------------------------------------- -->
+
+        <p>
+          Now, write some HTML. For this example, we will use a container
+          <span>&lt;div&gt;</span> and run the animation on each number within
+          that container that has the <b>.countup</b> class. Note that you can
+          have other elements with other classnames that won't interfere with
+          the functionality, so we have added additional
+          <span>&lt;span&gt;</span> tags that container
+          <b>.before-number</b> and <b>.after-number</b> classes. This is to
+          show that we can have other characters such as dollar signs or any
+          other type of text that you don't want to count up:
+        </p>
+        <b>HTML</b>
         <div class="code-block">
-          <pre><span class="selector">header img</span> {
-      <span class="attribute">display</span>: inline-block;
-      <span class="attribute">height</span>: <span class="number">120</span><span class="unit">px</span>;
-      <span class="attribute">vertical-align</span>: top;
-      <span class="attribute">width</span>: <span class="number">120</span><span class="unit">px</span>;
-    }</pre>
+          <pre><code>
+            &lt;<span class="selector">div</span> <span class="attribute">id</span>=<span class="selector">"container"</span>&gt;
+              &lt;<span class="selector">ul</span>&gt;
+                &lt;<span class="selector">li</span>&gt;
+                  &lt;<span class="selector">span</span> class="<span class="attribute before-number fadeInAnimated">before-number</span>"&gt;$&lt;/<span class="selector">span</span>&gt;
+                  &lt;<span class="selector">span</span> class="<span class="number countup">countup</span>"&gt;45.23&lt;/<span class="selector">span</span>&gt;
+                  &lt;<span class="selector">span</span> class="<span class="attribute after-number fadeInAnimated">after-number</span>"&gt;+&lt;/<span class="selector">span</span>&gt;
+                &lt;/<span class="selector">li</span>&gt;
+                &lt;<span class="selector">li</span>&gt;
+                  &lt;<span class="selector">span</span> class="<span class="number countup">countup</span>"&gt;91.1&lt;/<span class="selector">span</span>&gt;
+                  &lt;<span class="selector">span</span> class="<span class="attribute unit after-number fadeInAnimated">after-number</span>"&gt;%&lt;/<span class="selector">span</span>&gt;
+                &lt;/<span class="selector">li</span>&gt;
+                &lt;<span class="selector">li</span>&gt;
+                  &lt;<span class="selector">span</span> class="<span class="before-number">before-number fadeInAnimated</span>"&gt;₣&lt;/<span class="selector">span</span>&gt;
+                  &lt;<span class="selector">span</span> class="<span class="countup">number countup</span>"&gt;42&lt;/<span class="selector">span</span>&gt;
+                  &lt;<span class="selector">span</span> class="<span class="after-number">after-number</span>"&gt;!&lt;/<span class="selector">span</span>&gt;
+                &lt;/<span class="selector">li</span>&gt;
+              &lt;/<span class="selector">ul</span>&gt;
+            &lt;/<span class="selector">div</span>&gt;
+            </code></pre>
         </div>
-        <div id="example-one-container">
+
+        <p>Let's trigger this animation <b>onClick()</b> using a button:</p>
+        <b>HTML</b>
+        <div class="code-block">
+          <pre><code>
+          &lt;<span class="selector">button</span> <span class="attribute">id</span>=<span class="selector">"animateButton"</span>&gt;
+            Animate
+          &lt;/<span class="selector">button</span>&gt;
+          </code></pre>
+        </div>
+
+        <p>
+          Now add JavaScript, using the <b>animateCountUp()</b> function along
+          with the button as the event listener. We will also use a delay effect
+          with <b>setTimeout()</b> to count each number at staggered times, each
+          starting <b>700ms</b> after the previous one, in this case. We are
+          also going to add a callback function to <b>animateCountUp()</b> in
+          order to disable the button from being clicked again until all of the
+          animations are complete.
+        </p>
+        <b>JavaScript</b>
+
+        <div class="code-block">
+          <pre><code>
+              <span class="selector">document</span>
+                .<span class="selector">getElementById</span>(<span class="attribute">"animateButton"</span>)
+                .<span class="selector">addEventListener</span>(<span class="attribute">"click"</span>, () => {
+                  <span class="attribute">animateButton</span>.<span class="selector">disabled</span> = <span class="keyword">true</span>;
+                  <span class="keyword">const</span> container = <span class="selector">document</span>.<span class="selector">querySelector</span>(<span class="attribute">"#container"</span>);
+                  <span class="keyword">const</span> countupEls = container.<span class="selector">querySelectorAll</span>(<span class="attribute">".countup"</span>);
+                  <span class="keyword">const</span> totalElements = countupEls.<span class="selector">length</span>;
+                  <span class="keyword">let</span> completedAnimations = <span class="number">0</span>;
+              
+                  countupEls.<span class="selector">forEach</span>((el, index) => {
+                    <span class="selector">setTimeout</span>(() => {
+                      <span class="selector">animateCountUp</span>(el, <span class="number">7000</span>, <span class="number">7</span>, <span class="keyword">null</span>, () => {
+                        completedAnimations++;
+              
+                        // Check if all animations are completed
+                        <span class="keyword">if</span> (completedAnimations === totalElements) {
+                          <span class="selector">console</span>.<span class="selector">log</span>(<span class="string">"Animation finished!"</span>);
+                          <span class="attribute">animateButton</span>.<span class="selector">disabled</span> = <span class="keyword">false</span>;
+                        }
+                      });
+                    }, index * <span class="number">700</span>);
+                  });
+                });
+              </code></pre>
+        </div>
+        <p>
+          In this example, we search the <b>#container</b>
+          <span>&lt;div&gt;</span> for any element that has the
+          <b>.countup</b> class name. Then we apply the
+          <b>animateCountUp()</b> function with a total duration of 7000ms, a
+          step size value of 7 (only applicable to integers), and a default
+          starting value of 0 (by setting <b>null</b>). The button is disabled
+          until the animations are complete in order to prevent the user from
+          triggering the animation again once it has been started.
+        </p>
+
+        <!-- =================================================================== -->
+        <div id="example-container">
           <div id="container" class="example-one">
             <ul>
               <li>
@@ -84,7 +176,7 @@
                 ><span class="after-number fadeInAnimated">+</span>
               </li>
               <li>
-                <span class="countup">110.3</span
+                <span class="countup">91.1</span
                 ><span class="after-number fadeInAnimated">%</span>
               </li>
               <li>
@@ -97,59 +189,147 @@
           <button id="animateButton">Animate</button>
         </div>
       </div>
+      <!-- ============================================================== -->
 
-      <button id="anotherAnimateButton">Animate</button>
+      <!-- ============================================================== -->
+      <p>Here is another example:</p>
+      <div class="section">
+        <div id="example-two">
+          <div id="container-two" class="example-two">
+            <div class="card">
+              <span class="before-number">$</span
+              ><span id="countupTwo" class="countup">200</span
+              ><span class="after-number">+</span>
+            </div>
+            <div class="card">
+              <span id="countupThree" class="countup">18.76</span
+              ><span class="after-number">%</span>
+            </div>
 
-      <div id="container-two" class="example-one">
-        <ul>
-          <li>
-            <span class="before-number">$</span
-            ><span id="countupTwo" class="countup">174</span
-            ><span class="after-number">+</span>
-          </li>
-          <li>
-            <span id="countupThree" class="countup">18.76</span
-            ><span class="after-number">%</span>
-          </li>
+            <div class="card">
+              <span class="before-number">😎</span
+              ><span id="countupFour" class="countup">185.32</span
+              ><span class="after-number">!</span>
+            </div>
+          </div>
 
-          <li>
-            <span class="before-number">₣</span
-            ><span id="countupFour" class="countup">185.32</span
-            ><span class="after-number">!</span>
-          </li>
-        </ul>
-      </div>
-
-      <button id="aThirdAnimateButton">Animate</button>
-
-      <div id="container-three" class="example-one">
-        <div class="card">
-          <span class="before-number">$</span
-          ><span id="countupTwo" class="countup">174</span
-          ><span class="after-number">+</span>
-        </div>
-        <div class="card">
-          <span id="countupThree" class="countup">18.76</span
-          ><span class="after-number">%</span>
+          <button id="animateButtonTwo">Animate</button>
         </div>
 
-        <div class="card">
-          <span class="before-number">₣</span
-          ><span id="countupFour" class="countup">185.32</span
-          ><span class="after-number">!</span>
-        </div>
-      </div>
-
-      <div>
         <p>
-          Can be triggered on scroll - keep scrolling to trigger the animation!
-          Can be triggered on scroll - keep scrolling to trigger the animation!
-          Can be triggered on scroll - keep scrolling to trigger the animation!
-          Can be triggered on scroll - keep scrolling to trigger the animation!
-          Can be triggered on scroll - keep scrolling to trigger the animation!
+          This is very similar to the first example, with different arguments
+          passed into <b>animateCountUp()</b>, and starting each animation
+          <b>500ms</b> after the previous one by updating the
+          <b>setTimeout()</b> function:
         </p>
+        <b>HTML</b>
+        <div class="code-block">
+          <pre><code>
+            &lt;<span class="selector">div</span> id="<span class="attribute">container-two</span>" class="<span class="attribute">example-two</span>"&gt;
+              &lt;<span class="selector">div</span> class="<span class="attribute">card</span>"&gt;
+                &lt;<span class="selector">span</span> class="<span class="attribute before-number">before-number</span>"&gt;$&lt;/<span class="selector">span</span>&gt;
+                &lt;<span class="selector">span</span> id="<span class="attribute countupTwo">countupTwo</span>" class="<span class="number countup">countup</span>"&gt;200&lt;/<span class="selector">span</span>&gt;
+                &lt;<span class="selector">span</span> class="<span class="attribute after-number">after-number</span>"&gt;+&lt;/<span class="selector">span</span>&gt;
+              &lt;/<span class="selector">div</span>&gt;
+              &lt;<span class="selector">div</span> class="<span class="attribute">card</span>"&gt;
+                &lt;<span class="selector">span</span> id="<span class="attribute countupThree">countupThree</span>" class="<span class="number countup">countup</span>"&gt;18.76&lt;/<span class="selector">span</span>&gt;
+                &lt;<span class="selector">span</span> class="<span class="attribute unit after-number">after-number</span>"&gt;%&lt;/<span class="selector">span</span>&gt;
+              &lt;/<span class="selector">div</span>&gt;
+              &lt;<span class="selector">div</span> class="<span class="attribute">card</span>"&gt;
+                &lt;<span class="selector">span</span> class="<span class="attribute before-number">before-number</span>"&gt;😎&lt;/<span class="selector">span</span>&gt;
+                &lt;<span class="selector">span</span> id="<span class="attribute countupFour">countupFour</span>" class="<span class="number countup">countup</span>"&gt;185.32&lt;/<span class="selector">span</span>&gt;
+                &lt;<span class="selector">span</span> class="<span class="attribute after-number">after-number</span>"&gt;!&lt;/<span class="selector">span</span>&gt;
+              &lt;/<span class="selector">div</span>&gt;
+            &lt;/<span class="selector">div</span>&gt;
+            
+            &lt;<span class="selector">button</span> id="<span class="attribute">animateButtonTwo</span>"&gt;Animate&lt;/<span class="selector">button</span>&gt;
+            </code></pre>
+        </div>
+        <b>JavaScript</b>
+        <div class="code-block">
+          <pre><code>
+          <span class="selector">document</span>
+            .<span class="selector">getElementById</span>(<span class="attribute">"animateButtonTwo"</span>)
+            .<span class="selector">addEventListener</span>(<span class="attribute">"click"</span>, () => {
+              <span class="attribute">animateButtonTwo</span>.<span class="selector">disabled</span> = <span class="keyword">true</span>;
+              <span class="keyword">const</span> container = <span class="selector">document</span>.<span class="selector">querySelector</span>(<span class="attribute">"#container-two"</span>);
+              <span class="keyword">const</span> countupEls = container.<span class="selector">querySelectorAll</span>(<span class="attribute">".countup"</span>);
+              <span class="keyword">const</span> totalElements = countupEls.<span class="selector">length</span>;
+              <span class="keyword">let</span> completedAnimations = <span class="number">0</span>;
+          
+              countupEls.<span class="selector">forEach</span>((el, index) => {
+                <span class="selector">setTimeout</span>(() => {
+                  <span class="selector">animateCountUp</span>(el, <span class="number">3500</span>, <span class="number">1</span>, <span class="number">0</span>, () => {
+                    completedAnimations++;
+                    <span class="keyword">if</span> (completedAnimations === totalElements) {
+                      <span class="attribute">animateButtonTwo</span>.<span class="selector">disabled</span> = <span class="keyword">false</span>;
+                    }
+                  });
+                }, index * <span class="number">500</span>);
+              });
+            });
+          </code></pre>
+        </div>
+      </div>
+
+      <div class="section">
+        <p>
+          This function can also be triggered on scroll using JavaScript's
+          Intersection Observer API. Keep scrolling past the code example to
+          trigger the animation once the elements enter the viewport:
+        </p>
+        <b>HTML</b>
+        <div class="code-block">
+          <pre><code>
+  &lt;<span class="selector">div</span> <span class="attribute">id</span>=<span class="selector">"container-four"</span>&gt;
+    &lt;<span class="selector">h2</span>&gt;This example is triggered on scroll&lt;/<span class="selector">h2</span>&gt;
+    &lt;<span class="selector">ul</span>&gt;
+      &lt;<span class="selector">li</span>&gt;
+        &lt;<span class="selector">span</span> class="<span class="attribute before-number">before-number</span>"&gt;$&lt;/<span class="selector">span</span>&gt;
+        &lt;<span class="selector">span</span> id="<span class="attribute countupTwo">countupTwo</span>" class="<span class="number countup">countup</span>"&gt;200&lt;/<span class="selector">span</span>&gt;
+        &lt;<span class="selector">span</span> class="<span class="attribute after-number">after-number</span>"&gt;+&lt;/<span class="selector">span</span>&gt;
+      &lt;/<span class="selector">li</span>&gt;
+      &lt;<span class="selector">li</span>&gt;
+        &lt;<span class="selector">span</span> id="<span class="attribute countupThree">countupThree</span>" class="<span class="number countup">countup</span>"&gt;304.7&lt;/<span class="selector">span</span>&gt;
+        &lt;<span class="selector">span</span> class="<span class="attribute unit after-number">after-number</span>"&gt;%&lt;/<span class="selector">span</span>&gt;
+      &lt;/<span class="selector">li</span>&gt;
+      &lt;<span class="selector">li</span>&gt;
+        &lt;<span class="selector">span</span> class="<span class="attribute before-number">before-number</span>"&gt;+&lt;/<span class="selector">span</span>&gt;
+        &lt;<span class="selector">span</span> id="<span class="attribute countupFour">countupFour</span>" class="<span class="number countup">countup</span>"&gt;430.32&lt;/<span class="selector">span</span>&gt;
+        &lt;<span class="selector">span</span> class="<span class="attribute after-number">after-number</span>"&gt;!&lt;/<span class="selector">span</span>&gt;
+      &lt;/<span class="selector">li</span>&gt;
+    &lt;/<span class="selector">ul</span>&gt;
+  &lt;/<span class="selector">div</span>&gt;
+  </code></pre>
+        </div>
+        <b>JavaScript</b>
+        <div class="code-block">
+          <pre><code>
+  <span class="keyword">const</span> containerObserver = <span class="keyword">new</span> <span class="selector">IntersectionObserver</span>((entries) => {
+    entries.<span class="selector">forEach</span>((entry) => {
+      <span class="keyword">if</span> (entry.<span class="selector">isIntersecting</span>) {
+        <span class="keyword">const</span> countupEls = entry.<span class="selector">target</span>.<span class="selector">querySelectorAll</span>(<span class="attribute">".countup"</span>);
+        countupEls.<span class="selector">forEach</span>((el, index) => {
+          <span class="selector">setTimeout</span>(() => {
+            <span class="selector">animateCountUp</span>(el, <span class="number">4000</span>, <span class="number">1</span>, <span class="number">0</span>);
+          }, index * <span class="number">700</span>);
+        });
+  
+        containerThreeObserver.<span class="selector">unobserve</span>(entry.<span class="selector">target</span>);
+      }
+    });
+  });
+  
+  <span class="comment">// Observe the container div</span>
+  containerObserver.<span class="selector">observe</span>(
+    <span class="selector">document</span>.<span class="selector">getElementById</span>(<span class="attribute">"container"</span>)
+  );
+  </code></pre>
+        </div>
+
         <div class="spacer"></div>
         <div id="container-four">
+          <h2>This example is triggered on scroll</h2>
           <ul>
             <li>
               <span class="before-number">$</span
@@ -157,12 +337,12 @@
               ><span class="after-number">+</span>
             </li>
             <li>
-              <span id="countupThree" class="countup">304.76</span
+              <span id="countupThree" class="countup">304.7</span
               ><span class="after-number">%</span>
             </li>
 
             <li>
-              <span class="before-number">₣</span
+              <span class="before-number">+</span
               ><span id="countupFour" class="countup">430.32</span
               ><span class="after-number">!</span>
             </li>
@@ -176,53 +356,50 @@
         // count to 100 on page load
         document.addEventListener("DOMContentLoaded", () => {
           const countToOneHundred = document.getElementById("one-hundred");
-          animateCountUp(countToOneHundred, 5000, 1, 0);
+          animateCountUp(countToOneHundred, 5000, null, null, null);
         });
 
-        // Add event listener using JavaScript
         document
           .getElementById("animateButton")
           .addEventListener("click", () => {
+            animateButton.disabled = true;
             const container = document.querySelector("#container");
-            const countupEls = container.querySelectorAll(".countup");
-            countupEls.forEach((el, index) => {
-              setTimeout(() => {
-                animateCountUp(el, 7000, 7, 5);
-              }, index * 200);
-            });
-          });
-
-        document
-          .getElementById("anotherAnimateButton")
-          .addEventListener("click", () => {
-            const container = document.querySelector("#container-two");
             const countupEls = container.querySelectorAll(".countup");
             const totalElements = countupEls.length;
             let completedAnimations = 0;
 
             countupEls.forEach((el, index) => {
               setTimeout(() => {
-                animateCountUp(el, 4000, 1, 0, () => {
+                animateCountUp(el, 7000, 7, null, () => {
                   completedAnimations++;
 
                   // Check if all animations are completed
                   if (completedAnimations === totalElements) {
                     console.log("Animation finished!");
+                    animateButton.disabled = false;
                   }
                 });
               }, index * 700);
             });
           });
 
-        //example for #container-three
+        //example for #container-two
         document
-          .getElementById("aThirdAnimateButton")
+          .getElementById("animateButtonTwo")
           .addEventListener("click", () => {
-            const container = document.querySelector("#container-three");
+            animateButtonTwo.disabled = true;
+            const container = document.querySelector("#container-two");
             const countupEls = container.querySelectorAll(".countup");
+            const totalElements = countupEls.length;
+            let completedAnimations = 0;
             countupEls.forEach((el, index) => {
               setTimeout(() => {
-                animateCountUp(el, 3500, 1, 0);
+                animateCountUp(el, 3500, 1, 0, () => {
+                  completedAnimations++;
+                  if (completedAnimations === totalElements) {
+                    animateButtonTwo.disabled = false;
+                  }
+                });
               }, index * 500);
             });
           });
@@ -256,7 +433,10 @@
     <div class="footer">
       <!-- Replicate the content of the sidebar in the footer -->
       <a class="active" href="#main">Home</a>
-      <a href="https://github.com/jon424" rel="noopener" target="_blank"
+      <a
+        href="https://github.com/jon424/javascript-countup-animation"
+        rel="noopener"
+        target="_blank"
         >GitHub</a
       >
       <a
