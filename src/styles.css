@@ -52,7 +52,8 @@ body {
 }
 
 .sidebar a:hover:not(.active),
-footer a:hover:not(.active) {
+.footer a:hover:not(.active),
+.footer a:hover {
   background-color: #5fb3b3;
   color: white;
 }
