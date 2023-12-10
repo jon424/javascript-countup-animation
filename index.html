@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <!-- Include the npm package -->
     <script type="module" src="./dist/index.js" defer></script>
     <script type="module" src="example.js" defer></script>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -14,7 +13,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
   </head>
   <body>
-    <!-- Sidebar -->
     <div class="sidebar">
       <a
         href="https://github.com/jon424/javascript-countup-animation"
@@ -78,8 +76,6 @@
         <pre><code><span class="selector">&lt;script</span> <span class="attribute">type="module"</span><span class="selector">>
         </span><span class="number">import</span> <span class="selector">animateCountUp</span> from <span class="attribute">"./dist/index.js";</span>
 <span class="selector">&lt;/script></span></code></pre>
-        <!-- ------------------------------------------------------------------- -->
-
         <p>
           Now, write some HTML. For this example, we will use a container
           <span>&lt;div&gt;</span> and run the animation on each number within
@@ -114,7 +110,6 @@
             &lt;/<span class="selector">div</span>&gt;
             </code></pre>
         </div>
-
         <p>Let's trigger this animation <b>onClick()</b> using a button:</p>
         <b>HTML</b>
         <div class="code-block">
@@ -124,7 +119,6 @@
           &lt;/<span class="selector">button</span>&gt;
           </code></pre>
         </div>
-
         <p>
           Now add JavaScript, using the <b>animateCountUp()</b> function along
           with the button as the event listener. We will also use a delay effect
@@ -135,7 +129,6 @@
           animations are complete.
         </p>
         <b>JavaScript</b>
-
         <div class="code-block">
           <pre><code>
               <span class="selector">document</span>
@@ -173,8 +166,6 @@
           until the animations are complete in order to prevent the user from
           triggering the animation again once it has been started.
         </p>
-
-        <!-- =================================================================== -->
         <div id="example-container">
           <div id="container" class="example-one">
             <ul>
@@ -197,9 +188,6 @@
           <button id="animateButton">Animate</button>
         </div>
       </div>
-      <!-- ============================================================== -->
-
-      <!-- ============================================================== -->
       <p>Here is another example:</p>
       <div class="section">
         <div id="example-two">
@@ -334,7 +322,6 @@
   );
   </code></pre>
         </div>
-
         <div class="spacer"></div>
         <div id="container-four">
           <h2>This example is triggered on scroll</h2>

@@ -6,6 +6,7 @@ document.addEventListener("DOMContentLoaded", () => {
   animateCountUp(countToOneHundred, 5000, null, null, null);
 });
 
+// example one
 document.getElementById("animateButton").addEventListener("click", () => {
   animateButton.disabled = true;
   const container = document.querySelector("#container");
@@ -28,7 +29,7 @@ document.getElementById("animateButton").addEventListener("click", () => {
   });
 });
 
-//example for #container-two
+// example two
 document.getElementById("animateButtonTwo").addEventListener("click", () => {
   animateButtonTwo.disabled = true;
   const container = document.querySelector("#container-two");
@@ -47,7 +48,7 @@ document.getElementById("animateButtonTwo").addEventListener("click", () => {
   });
 });
 
-//example for #container-four (with Intersection Observer)
+//Intersection Observer example
 const containerThreeObserver = new IntersectionObserver((entries) => {
   entries.forEach((entry) => {
     if (entry.isIntersecting) {
@@ -63,9 +64,4 @@ const containerThreeObserver = new IntersectionObserver((entries) => {
   });
 });
 
-// Observe the container-three
 containerThreeObserver.observe(document.getElementById("container-four"));
-
-//TODO: show each feature (each arg should have a good example)
-// onclick examples, IO examples, show that you can have any kind of element (li, divs, headings... )
-// show with and without delay
