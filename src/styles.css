@@ -185,6 +185,10 @@ pre {
     margin: unset;
     padding: unset;
   }
+  
+  h1 {
+    font-size: 2.4rem;
+  }
   .sidebar {
     display: flex;
     flex-direction: column;

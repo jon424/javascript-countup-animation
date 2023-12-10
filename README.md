@@ -26,7 +26,7 @@ counting up to is an integer.
 ## Using `animateCountUp()`
 First, import the module:
 
-```
+```js
  import animateCountUp from "./dist/index.js";
 ```
 
