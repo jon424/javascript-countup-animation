@@ -2,7 +2,6 @@
 
 A JavaScript function to display incrementing numbers. [See a live website with this function and complete documentation here.](https://jon424.github.io/javascript-countup-animation/)
 
-![count-up animation example](./js-countup-one.gif)
 
 
 ## animateCountUp(element, duration, stepSize, startingValue)
@@ -54,7 +53,6 @@ the functionality, so we have added additional `<span>` tags that contain `.befo
 show that we can have other characters such as dollar signs or any
 other type of text that you don't want to count up:
 
-![count-up animation example two](js-countup-two.gif)
 
 HTML:
 ```html
@@ -116,9 +114,6 @@ JavaScript:
 <br>
 This next example is very similar to the first example, with different arguments passed into animateCountUp(), and starting each animation 500ms after the previous one by updating the setTimeout() function:
 
-![a third count-up animation example](js-countup-three.gif)
-
-
 
 HTML
 ```html
@@ -171,8 +166,6 @@ JavaScript
 
 <br>
 This function can also be triggered on scroll using JavaScript's Intersection Observer API:
-
-![count-up animation triggered on scroll](js-countup-four.gif)
 
 HTML
 ```html
