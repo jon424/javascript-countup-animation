@@ -26,17 +26,18 @@ counting up to is an integer.
 ## Using `animateCountUp()`
 First, import the module:
 
+**JavaScript**
 ```js
  import animateCountUp from "./dist/index.js";
 ```
 
 Then call the function by targeting an HTML element:
 
-HTML:
+**HTML**
 ```html
 <h1>JavaScript Count-up Animation...<span id="one-hundred"> 100</span></h1>
 ```
-JavaScript:
+**JavaScript**
 ```js
 // count to 100 on page load
 document.addEventListener("DOMContentLoaded", () => {
@@ -54,7 +55,7 @@ show that we can have other characters such as dollar signs or any
 other type of text that you don't want to count up:
 
 
-HTML:
+**HTML**
 ```html
 <div id="container">
   <ul>
@@ -80,7 +81,7 @@ HTML:
 </div>
 ```
 
-JavaScript:
+**JavaScript**
 ```js
  document
 .getElementById("animateButton")
@@ -114,8 +115,9 @@ JavaScript:
 <br>
 This next example is very similar to the first example, with different arguments passed into animateCountUp(), and starting each animation 500ms after the previous one by updating the setTimeout() function:
 
+<br>
 
-HTML
+**HTML**
 ```html
 <div id="container-two" class="example-two">
   <div class="card">
@@ -137,7 +139,7 @@ HTML
 <button id="animateButtonTwo">Animate</button>
 ```
 
-JavaScript
+**JavaScript**
 ```js
  document
 .getElementById("animateButtonTwo")
@@ -167,7 +169,9 @@ JavaScript
 <br>
 This function can also be triggered on scroll using JavaScript's Intersection Observer API:
 
-HTML
+<br>
+
+**HTML**
 ```html
 <div id="container-four">
     <h2>This example is triggered on scroll</h2>
@@ -190,7 +194,7 @@ HTML
   </div>
 ```
 
-JavaScript
+**JavaScript**
 ```js
 const containerObserver = new IntersectionObserver((entries) => {
     entries.forEach((entry) => {
