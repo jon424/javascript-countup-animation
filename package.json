@@ -1,11 +1,17 @@
 {
-  "name": "countup-animation-two",
+  "name": "countup-animation",
   "version": "1.0.0",
+  "description": "A JavaScript function to display incrementing numbers.",
   "main": "dist/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "keywords": [],
+  "keywords": [
+    "countup",
+    "count-up",
+    "countup animation",
+    "count-up animation"
+  ],
   "author": "Jon Jackson",
   "license": "ISC"
 }
