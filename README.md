@@ -2,7 +2,7 @@
 
 A JavaScript function to display incrementing numbers. [See a live website with this function and complete documentation here.](https://jon424.github.io/javascript-countup-animation/)
 
-![count-up animation example](js-countup-one.gif)
+![count-up animation example](./js-countup-one.gif)
 
 
 ## animateCountUp(element, duration, stepSize, startingValue)
