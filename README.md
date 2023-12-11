@@ -172,7 +172,7 @@ This function can also be triggered on scroll using JavaScript's Intersection Ob
 
 **HTML**
 ```html
-<div id="container-four">
+<div id="container-three">
     <h2>This example is triggered on scroll</h2>
     <ul>
       <li>
@@ -212,7 +212,7 @@ const containerObserver = new IntersectionObserver((entries) => {
   
   // Observe the container div
   containerObserver.observe(
-    document.getElementById("container")
+    document.getElementById("container-three")
   );
 ```
 <br>
