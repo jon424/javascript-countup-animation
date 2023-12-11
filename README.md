@@ -164,9 +164,8 @@ This next example is very similar to the first example, with different arguments
 ```
 <br>
 
----
+## On Scroll
 
-<br>
 This function can also be triggered on scroll using JavaScript's Intersection Observer API:
 
 <br>
