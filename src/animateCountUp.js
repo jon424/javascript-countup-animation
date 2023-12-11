@@ -8,7 +8,7 @@ const animateCountUp = (
   const animationDuration = duration ?? 10000;
   const frameDuration = 1000 / 60;
   const totalFrames = Math.round(animationDuration / frameDuration);
-  const easeOutQuad = (t) => t * (2 - t);
+  const slowTowardsEnd = (t) => t * (2 - t);
 
   let frame = 0;
   const countTo = parseFloat(el.innerText, 10);
@@ -17,7 +17,7 @@ const animateCountUp = (
 
   const counter = setInterval(() => {
     frame++;
-    const progress = easeOutQuad(frame / totalFrames);
+    const progress = slowTowardsEnd(frame / totalFrames);
     let currentCount;
 
     if (isDecimal) {

@@ -8,7 +8,7 @@ A JavaScript function to display incrementing numbers. [See a live website with 
 
 <ul>
 <li>
-<b>element</b> - HTML element that contains a number to be animated.This number can be an integer (<em>i.e.</em> 1, 42, 23...) or have 1 or 2 decmimal points (<em>i.e.</em> 23.9, 9.04...)
+<b>element</b> - HTML element that contains a number to be animated.This number can be an integer (<em>i.e.</em> 1, 42, 23...) or have any number of decimal points (<em>i.e.</em> 23.9, 9.042...)
 </li>
 <li>
 <b>duration</b> - total length of time of the animation in
@@ -65,7 +65,7 @@ other type of text that you don't want to count up:
       <span class="after-number">+</span>
     </li>
     <li>
-      <span class="countup">91.1</span>
+      <span class="countup">91.123</span>
       <span class="after-number">%</span>
     </li>
     <li>
