@@ -222,5 +222,5 @@ const containerObserver = new IntersectionObserver((entries) => {
 <br>
 
 Live site with examples and documentation:
-https://jon424.github.io/javascript-countup-animation/
+https://countup-animation.netlify.app/
 
