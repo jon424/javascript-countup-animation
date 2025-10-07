@@ -1,6 +1,6 @@
 # JavaScript Count-up Animation 🔢 🚀
 
-A JavaScript function to display incrementing numbers. [See a live website with this function and complete documentation here.](https://jon424.github.io/javascript-countup-animation/)
+A JavaScript function to display incrementing numbers. [See a live website with this function and complete documentation here.]([https://jon424.github.io/javascript-countup-animation/](https://countup-animation.netlify.app/))
 
 
 
